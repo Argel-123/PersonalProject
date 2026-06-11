@@ -16,7 +16,45 @@ import slq from "./assets/img/mysql.png";
 import "./App.css";
 
 function App() {
-  // const [count, setCount] = useState(0)
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [status, setStatus] = useState({ sending: false, message: "" });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus({ sending: true, message: "" });
+
+    try {
+      const res = await fetch("http://localhost:5000/send-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        setStatus({ sending: false, message: "Message sent successfully!" });
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setStatus({
+          sending: false,
+          message: data.error || "Something went wrong.",
+        });
+      }
+    } catch (err) {
+      setStatus({
+        sending: false,
+        message: "Failed to send. Try again later.",
+      });
+    }
+  };
 
   return (
     <>
@@ -324,22 +362,24 @@ function App() {
             <div className="contact-infos">
               <ul>
                 <li>
-                  <i class="bx bxs-envelope"></i>posadasargeljoseph433@gmail.com
+                  <i className="bx bxs-envelope"></i>
+                  posadasargeljoseph433@gmail.com
                 </li>
                 <li>
-                  <i class="bx bxs-phone"></i>+69 994-441-0317
+                  <i className="bx bxs-phone"></i>+69 994-441-0317
                 </li>
                 <li>
-                  <i class="bx bxs-map"></i>Mindanao,Kapatagan,Lanao del norte
-                  Philippines
+                  <i className="bx bxs-map"></i>Mindanao, Kapatagan, Lanao del
+                  norte Philippines
                 </li>
                 <li>
-                  <i class="bx bxs-time"></i>Mon-Fri: 9AM - 5PM
+                  <i className="bx bxs-time"></i>Mon-Fri: 9AM - 5PM
                 </li>
               </ul>
             </div>
           </div>
-          <form className="email-form">
+
+          <form className="email-form" onSubmit={handleSubmit}>
             <h2 className="contact-title">Contact Me!</h2>
             <div className="box">
               <div className="contentbox">
@@ -348,19 +388,10 @@ function App() {
                 </p>
                 <input
                   type="text"
+                  name="name"
                   placeholder="Jhon Doe"
-                  id="subject"
-                  required
-                />
-              </div>
-              <div className="contentbox">
-                <p>
-                  Name <span>*</span>
-                </p>
-                <input
-                  type="text"
-                  placeholder="Jhon Doe"
-                  id="subject"
+                  value={formData.name}
+                  onChange={handleChange}
                   required
                 />
               </div>
@@ -370,8 +401,10 @@ function App() {
                 </p>
                 <input
                   type="email"
+                  name="email"
                   placeholder="youremail@example.com"
-                  id="to_email"
+                  value={formData.email}
+                  onChange={handleChange}
                   required
                 />
               </div>
@@ -380,15 +413,20 @@ function App() {
                   Message <span>*</span>
                 </p>
                 <textarea
+                  name="message"
                   placeholder="Your Message"
-                  id="message"
+                  value={formData.message}
+                  onChange={handleChange}
                   required
                 ></textarea>
               </div>
             </div>
-            <button type="submit" className="btn">
-              Send Message
+            <button type="submit" className="btn" disabled={status.sending}>
+              {status.sending ? "Sending..." : "Send Message"}
             </button>
+            {status.message && (
+              <p style={{ marginTop: "12px" }}>{status.message}</p>
+            )}
           </form>
         </div>
       </section>

@@ -98,33 +98,46 @@ nav .logo h1 span{
 
     color:var(--secondary-color);
 } 
+@media (max-width: 768px){
+    .nav{
+        flex-direction: column;
+        height: auto;
+        padding: 15px 20px;
+        gap: 15px;
+    }
+    .nav ul{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .nav ul li{
+        margin: 5px 10px;
+    }
+}
 .hero{
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 90px 50px;
+    flex-wrap: wrap;
+    gap: 40px;
+    @media (max-width: 847px){
+        flex-direction: column-reverse;
+        padding: 60px 20px;
+        text-align: center;
+    }
 }
 .hero .words{
     position: relative;
     overflow: hidden;
-     @media (max-width: 768px){
-        display: none;
-    }
-     @media (max-width: 847px){
-        display: flex;
-    }
 }
 .hero .loader{
     display: flex;
     height: 50px;
-     @media (max-width: 768px){
-        display: none;
-    }
-     @media (max-width: 847px){
-        display: flex;
-    }
     margin-bottom: 10px;
+    @media (max-width: 847px){
+        justify-content: center;
+    }
 }
 .hero .words .word{
    display: block;
@@ -163,15 +176,13 @@ nav .logo h1 span{
 
 .hero .hero-content{
     width: 50%;
-    @media (max-width: 768px){
-        width: 100%;
-        text-align: center;
-    }
     @media (max-width: 847px){
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        text-align: center;
     }
 }
 .hero-content h1{
@@ -198,8 +209,8 @@ nav .logo h1 span{
     letter-spacing: 0.9px;
     margin-bottom: 20px;
      @media (max-width: 768px) {
-        font-size: 8px;
-        width: 40%;
+        font-size: 14px;
+        width: 100%;
     }
 }
 .hero-content p strong{
@@ -208,15 +219,22 @@ nav .logo h1 span{
 }
 .hero .Images{
     width: 30%;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+    @media (max-width: 847px){
+        width: 90%;
+        max-width: 320px;
+        aspect-ratio: 1;
+        margin: 0 auto;
+    }
    
 }
 .hero .hero-image{
     position: absolute;
-    top: 10%;
-    left: 14%;
+    top: -26%;
+    left: 25%;
     transform: translateY(100%);
     width: 230px;
     height: 230px;
@@ -226,7 +244,12 @@ nav .logo h1 span{
     box-shadow: 0 0 20px rgb(79, 95, 195);
     animation: slide 2s ease in-out;
     @media (max-width: 847px){
-        left: 4%;
+        top: -16%;
+        left: 26%;
+        width: 45%;
+        height: 45%;
+        max-width: 180px;
+        max-height: 180px;
     }
     
 }
@@ -247,6 +270,12 @@ nav .logo h1 span{
     border-radius: 50%;
     animation: rotate 15s linear infinite;
     filter: 10px 10px 10px rgba(67, 103, 250, 0.929);
+    @media (max-width: 847px){
+        width: 100%;
+        height: 100%;
+        max-width: 320px;
+        max-height: 320px;
+    }
 }
 @keyframes rotate{
     0%{
@@ -291,14 +320,19 @@ nav .logo h1 span{
 .about{
     position: relative;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     gap: 50px;
     background: var(--background-color);
     padding: 90px 50px;
     border-top: 1px solid var(--secondary-color);
+    @media (max-width: 847px){
+        flex-direction: column-reverse;
+        padding: 60px 20px;
+    }
 }
 .about .line{
     position: absolute;
@@ -312,7 +346,7 @@ nav .logo h1 span{
 }
 .about .about-content{
     width: 50%;
-     @media (max-width: 768px){
+     @media (max-width: 847px){
         width: 100%;
         text-align: center;
     }
@@ -337,7 +371,7 @@ nav .logo h1 span{
     overflow: hidden;
     width: 100%;
      @media (max-width: 768px) {
-        font-size: 8px;
+        font-size: 14px;
         display: block;
     }
 }
@@ -373,13 +407,9 @@ nav .logo h1 span{
 .about .about-image{
     width: 300px;
     height: 300px;
-     @media (max-width: 768px){
-        display: none;
-    }
      @media (max-width: 847px){
-        display: flex;
-        width: 260px;
-        height: 250px auto;
+        width: 220px;
+        height: 220px;
     }
     object-fit: cover;
     border-radius: 50%;
@@ -395,20 +425,22 @@ nav .logo h1 span{
 
 .about .about-content .icons{
     border-top: 2px solid var(--secondary-color);
-     @media (max-width: 768px){
-        width: 40%;
-    }
-    @media (max-width: 847px){
-        width: 50%;
+    width: 26%;
+    @media (max-width: 1600px){
+        width: 35%;
     }
     @media (max-width: 1200px){
         width: 46%;
     }
-    @media (max-width: 1600px){
-        width: 35%;
+    @media (max-width: 847px){
+        width: 60%;
+        margin: 30px auto 0;
+        justify-content: center;
     }
-    @media (max-width: 2600px){
-        width: 26%;
+    @media (max-width: 768px){
+        width: 60%;
+        margin: 30px auto 0;
+        justify-content: center;
     }
     display: flex;
     gap: 20px;
@@ -432,7 +464,7 @@ nav .logo h1 span{
 }
 .skills{
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -440,7 +472,7 @@ nav .logo h1 span{
     gap: 10px;
     background: var(--background-color);
     border-top: 1px solid var(--secondary-color);
-    padding: 10px;
+    padding: 40px 10px;
 }
 .skills h2{
     font-size: 50px;
@@ -456,29 +488,32 @@ nav .logo h1 span{
     font-weight: 600;
     color: var(--text-color);
      @media (max-width: 768px){
-        font-size: 30px;
+        font-size: 18px;
+        text-align: center;
+        padding: 0 10px;
     }
 }
 .skills .cards{
-    width: 77%;
-    /* background: red; */
+    width: 90%;
     margin-top: 20px;
     display: grid;
-    grid-template-columns: repeat(4,3fr);
-    gap: 50px;
+    grid-template-columns: repeat(4,1fr);
+    gap: 30px;
     justify-content: center;
     align-items: center;
     padding: 20px;
-     @media (max-width: 768px){
-        grid-template-columns: repeat(2,0.5fr);
+     @media (max-width: 1024px){
+        grid-template-columns: repeat(2,1fr);
+        width: 95%;
+        gap: 20px;
     }
-     @media (max-width: 847px){
-        grid-template-columns: repeat(2,0.5fr);
+     @media (max-width: 600px){
+        grid-template-columns: 1fr;
     }
 }
 
 .skills .cards .skill-card{
-    width: 94%;
+    width: 100%;
     height: 240px;
     background: var(--secondary-text-color);
     padding: 10px 20px;
@@ -525,14 +560,14 @@ nav .logo h1 span{
 .projects{
     position: relative;
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 10px;
     background: var(--background-color);
-    padding: 30px 50px;
+    padding: 50px 20px;
     border-top: 1px solid var(--secondary-color);
 }
 
@@ -545,36 +580,27 @@ nav .logo h1 span{
 }
 .project{
     width: 100%;
-    height: 100%;
     display: grid;
-    /* background: red; */
     border-radius: 10px;
-    grid-template-columns: repeat(3,4fr);
+    grid-template-columns: repeat(3,1fr);
     gap: 30px;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     padding: 20px;
-     @media (max-width: 768px){
-        grid-template-columns: repeat(2,0.5fr);
+     @media (max-width: 1024px){
+        grid-template-columns: repeat(2,1fr);
     }
-     @media (max-width: 847px){
-        grid-template-columns: repeat(2,0.5fr);
+     @media (max-width: 600px){
+        grid-template-columns: 1fr;
     }
 }
 .project .project-card{
     position: relative;
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    aspect-ratio: 4 / 3;
     background: #4c4d65;
-    /* padding: 20px; */
     border-radius: 10px;
     overflow: hidden;
-     @media (max-width: 768px){
-        width: 100%;
-    }
-     @media (max-width: 847px){
-        width: 100%;
-    }
     transition: all .5s ease;
 }
 .project .project-card:hover{
@@ -585,12 +611,6 @@ nav .logo h1 span{
     width: 100%;
     height: 100%;
     background: #ffffff;
-     @media (max-width: 768px){
-        width: 100%;
-    }
-     @media (max-width: 847px){
-        width: 100%;
-    }
     border-radius: 10px;
     object-fit: cover;
 }
@@ -617,12 +637,6 @@ nav .logo h1 span{
     width: 100%;
     height: 100%;
     background: transparent;
-     @media (max-width: 768px){
-        width: 100%;
-    }
-     @media (max-width: 847px){
-        width: 100%;
-    }
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -674,29 +688,20 @@ nav .logo h1 span{
 
 .contact{
     width: 100%;
-    height: 100vh;
-    border-top: 1px solid lab(90.18% 4.87 -14.27);
-}
-.contact{
-    width: 100%;
-    height: 100vh;
-    padding: 30px 50px;
-    
+    min-height: 100vh;
+    padding: 50px 20px;
+    display: flex;
+    align-items: center;
 }
 .contact-form{
     width: 100%;
-    height: 100%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: stretch;
     background: linear-gradient(45deg, #5c9dff, #a6a4f0);
     padding: 20px;
     border-radius: 10px;
     gap: 10px;
-     @media (max-width: 768px){
-        flex-direction: column;
-        gap: 20px;
-    }
      @media (max-width: 847px){
         flex-direction: column;
         gap: 20px;
@@ -704,22 +709,8 @@ nav .logo h1 span{
 }
 .contact-info-text{
     width: 40%;
-    height: 60%;
     padding: 20px;
     border-radius: 10px;
-     @media (max-width: 768px){
-        width: 100%;
-        text-align: center;
-    }
-     @media (max-width: 847px){
-        width: 100%;
-        text-align: center;
-    }
-   
-     @media (max-width: 768px){
-        width: 100%;
-        text-align: center;
-    }
      @media (max-width: 847px){
         width: 100%;
         text-align: center;
@@ -758,14 +749,9 @@ nav .logo h1 span{
 
 .email-form{
     width: 50%;
-    height: 60%;
     background: linear-gradient(160deg, #6d5aff,#1366ff);
     padding: 20px;
     border-radius: 10px;
-     @media (max-width: 768px){
-        width: 100%;
-        text-align: center;
-    }
      @media (max-width: 847px){
         width: 100%;
         text-align: center;
@@ -773,29 +759,16 @@ nav .logo h1 span{
 }
 .email-form .box{
     width: 100%;
-    height: 60%;
     display: grid;
     grid-template-columns: repeat(2,1fr);
-     @media (max-width: 768px){
-        grid-template-columns: repeat(1,1fr);
+    gap: 15px;
+     @media (max-width: 600px){
+        grid-template-columns: 1fr;
     }
-     @media (max-width: 847px){
-        grid-template-columns: repeat(1,1fr);
-    }
-    flex-direction: column;
-    justify-content: center;
-    
    padding: 10px;
-     @media (max-width: 768px){
-        width: 100%;
-        text-align: center;
-     }
-     /* background: red; */
 }
 .contentbox{
-    width: 80%;
-    height: 70px;
-    /* background: gray; */
+    width: 100%;
 }
 .contentbox p{
     margin-bottom: 10px;
@@ -807,22 +780,16 @@ nav .logo h1 span{
 }
 .contentbox input{
     width: 100%;
-    height: 100% auto;
-     @media (max-width: 768px){
-        width: 100%;
-    }
-     @media (max-width: 847px){
-        width: 100%;
-    }
+    height: 44px;
     padding: 10px;
     border-radius: 5px;
     border: none;
     outline: none;
 }
 .content-textarea{
-    width: 80%;
-    height: 100px;
-    /* background: gray; */
+    width: 100%;
+    height: 120px;
+    grid-column: 1 / -1;
 }
 .content-textarea textarea{
     width: 100%;
@@ -831,13 +798,8 @@ nav .logo h1 span{
     border-radius: 5px;
     border: none;
     resize: none;
-     @media (max-width: 768px){
-        width: 100%;
-    }
-     @media (max-width: 847px){
-        width: 100%;
-    }
     outline: none;
+    font-family: inherit;
 }
 .email-form .btn{
     margin-top: 20px;
@@ -851,12 +813,7 @@ nav .logo h1 span{
     transition: 0.3s;
     border: none;
     cursor: pointer;
-     @media (max-width: 768px){
-        width: 100%;
-    }
-     @media (max-width: 847px){
-        width: 100%;
-    }
+    width: 100%;
 }
 .email-form .btn:hover{
     background-color: var(--secondary-color);
@@ -865,10 +822,12 @@ nav .logo h1 span{
 
 .footer{
     width: 100%;
-    height: 60px;
+    min-height: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
     background: var(--background-color);
     color: var(--text-color);
+    padding: 10px 20px;
+    text-align: center;
 }
